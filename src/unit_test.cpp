@@ -4,7 +4,6 @@
 #include "server.h"
 #include "client.h"
 
-/*
 TEST(HW1Test, TEST1) {
     Server server{};
     auto bryan{server.add_client("bryan")};
@@ -87,6 +86,8 @@ TEST(HW1Test, TEST11) {
     std::string sender{}, receiver{};
     double value;
     EXPECT_THROW(Server::parse_trx("sarah-clay_0.5", sender, receiver, value), std::runtime_error);
+    EXPECT_THROW(Server::parse_trx("sarahclay_0.5", sender, receiver, value), std::runtime_error);
+    EXPECT_THROW(Server::parse_trx("sarah-clay-a0.5", sender, receiver, value), std::runtime_error);
 }
 
 TEST(HW1Test, TEST12) {
@@ -134,7 +135,7 @@ TEST(HW1Test, TEST15) {
     std::string mempool{};
     for(const auto& trx : pending_trxs)
         mempool += trx;
-        
+
     show_wallets(server);
     size_t nonce{server.mine()};
     show_wallets(server);
@@ -146,7 +147,3 @@ TEST(HW1Test, TEST15) {
     EXPECT_TRUE(clint->get_wallet()==3.5 ||clint->get_wallet()==3.5 ||clint->get_wallet()==9.75);
     EXPECT_TRUE(sarah->get_wallet()==13.25 || sarah->get_wallet()==7 || sarah->get_wallet()==7);
 }
-*/
-
-
-
